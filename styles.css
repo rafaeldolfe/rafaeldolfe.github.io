@@ -1,0 +1,117 @@
+* {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+}
+
+.background {
+	background: #eee;
+}
+
+.header {
+    background-image: url("img/TheMachineryBruteRunPath.png");
+	background-size: 100% 100%;
+    margin: auto;
+}
+
+#header {
+	display: flex;
+	margin: auto;
+	padding: 20px;
+	height: 500px;
+}
+
+.profile-image-container {
+	flex: 0 0 65%;
+}
+
+.profile-text {
+	flex: 1;
+	text-align: center;
+}
+
+.profile-text h1{
+	color: white;
+	text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+	font-size: 60px;
+	font-weight: 700;
+	margin: 0;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0.5em;
+}
+
+.profile-text h2{
+	color: white;
+	text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+	padding-right: 5px;
+	padding-left: 5px;
+	font-size: 30px;
+}
+
+.intro_greeting {
+	float: right;
+}
+
+.intro_desc {
+	float: right;
+}
+
+.projects{
+	text-align: center;
+}
+
+.projects h1{
+	font-size: 40px;
+}
+
+.projects h2{
+	padding-bottom: 15px;
+	font-size: 20px;
+}
+
+body {
+	font-family: Merriweather, sans-serif;
+	margin: 0;
+}
+
+.portfolio-container {
+    #background-color: gray;
+    margin: auto;
+}
+
+.portfolio-title {
+	margin-bottom:20px;
+	margin-top:20px;
+	
+}
+
+#zombtron {
+    #float: left;
+    #background-color: blue;
+}
+#amnesia {
+    #float: left;
+    #background-color: green;
+}
+
+.center {
+	font-size: 30px;
+	margin: auto;
+	width: 75%;
+	border: 3px solid gray;
+	padding: 10px;
+}
