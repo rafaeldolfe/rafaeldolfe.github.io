@@ -16,6 +16,7 @@
     background-image: url("img/TheMachineryBruteRunPath.png");
 	background-size: 100% 100%;
     margin: auto;
+	padding-bottom: 200px;
 }
 
 #header {
@@ -88,27 +89,34 @@ body {
 	margin: 0;
 }
 
-.portfolio-container {
-    #background-color: gray;
-    margin: auto;
-}
-
 .portfolio-title {
 	margin-bottom:20px;
 	margin-top:20px;
 	
 }
 
-#zombtron {
-    #float: left;
-    #background-color: blue;
+.portfolio-container {
+    margin: auto;
+	overflow: hidden;
 }
-#amnesia {
-    #float: left;
-    #background-color: green;
+
+.row {
+	width: 1050px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.item {
+	margin: auto;
+    float: left;
+	width: 500px;
+	height: 500px;
+	padding: 10px;
+	overflow: hidden;
 }
 
 .center {
+	background-color: beige;
 	font-size: 30px;
 	margin: auto;
 	width: 75%;
