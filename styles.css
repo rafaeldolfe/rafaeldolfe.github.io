@@ -105,7 +105,7 @@
 	font-size: 15px;
 }
 
-a.aboutme-link, a.aboutme-link:visited, a.aboutme-link:active {
+a.running-link, a.running-link:visited, a.running-link:active {
 	color: white;
     text-decoration: none;
     border-bottom: 1px white dotted;
