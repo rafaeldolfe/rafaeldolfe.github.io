@@ -85,20 +85,20 @@
 	overflow: hidden;
 }
 
-.aboutme-title {
+.big-title {
 	font-weight: 300;
 	color: white;
 	font-family: 'Quicksand',sans-serif;
 	font-size: 60px;
 }
 
-.aboutme-desc {
+.running-desc {
 	text-align: justify;
 	margin-left: 20%;
 	margin-right: 20%;
 }
 
-.aboutme-text {
+.running-text {
 	font-weight: 300;
 	font-family: 'Quicksand', sans-serif;
 	color: white;
@@ -112,7 +112,7 @@ a.aboutme-link, a.aboutme-link:visited, a.aboutme-link:active {
 	background-color: transparent;
 }
 
-.aboutme-text p {
+.running-text p {
 	margin: 0 0 10px;
 }
 
@@ -174,4 +174,22 @@ a.projects, a.projects:visited, a.projects:active {
 	width: 75%;
 	border: 3px solid gray;
 	padding: 10px;
+}
+
+.jump-offset {
+	height: 47px;
+}
+
+.contact {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #333;
+	
+	background-color: #062F4F;
+	padding-bottom: 20px;
+	text-align: center;
+	width: 100%;
+	display: block;
+	overflow: hidden;
 }
