@@ -9,7 +9,8 @@
 }
 
 .background {
-	background: #eee;
+	/*background: #eee; */
+	background: #222;
 }
 
 .header {
@@ -24,6 +25,18 @@
 	margin: auto;
 	padding: 20px;
 	height: 500px;
+}
+
+.text {
+	font-family: Helvetica;
+	font-weight: 300;
+	color: white;
+}
+
+.splitter {
+	padding: 10px;
+	margin-bottom: 50px;
+	background: #111;
 }
 
 .profile-image-container {
@@ -78,7 +91,7 @@
 	color: #333;
 	
 	background-color: #062F4F;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 	text-align: center;
 	width: 100%;
 	display: block;
@@ -136,7 +149,6 @@ body {
 
 .portfolio-title {
 	margin-bottom:20px;
-	margin-top:20px;
 	
 }
 
@@ -168,16 +180,20 @@ a.projects, a.projects:visited, a.projects:active {
 }
 
 .center {
-	background-color: beige;
+	color: white;
+	background-color: dimgray;
 	font-size: 30px;
 	margin: auto;
-	width: 75%;
-	border: 3px solid gray;
+	width: 100%;
 	padding: 10px;
 }
 
 .jump-offset {
 	height: 47px;
+}
+
+.marginbot {
+	margin-top: 20px;
 }
 
 .contact {
@@ -192,4 +208,11 @@ a.projects, a.projects:visited, a.projects:active {
 	width: 100%;
 	display: block;
 	overflow: hidden;
+}
+
+.social-icon {
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+	margin-top: 10px;
 }
