@@ -161,13 +161,13 @@ body {
 	width: 1050px;
 	overflow: hidden;
 	margin: 0 auto;
+	margin-bottom: 50px;
 }
 
 .item {
 	margin: auto;
     float: left;
 	width: 500px;
-	height: 500px;
 	padding: 10px;
 	overflow: hidden;
 }
