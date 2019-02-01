@@ -1,3 +1,5 @@
+@import "~@fortawesome/fontawesome-free/scss/fontawesome"; 
+
 * {
         margin: 0;
         padding: 0;
@@ -28,15 +30,42 @@
 }
 
 .text {
-	font-family: Helvetica;
-	font-weight: 300;
 	color: white;
+	font-family: 'Quicksand',sans-serif;
+	font-weight: 100;
 }
 
 .splitter {
 	padding: 10px;
 	margin-bottom: 50px;
 	background: #111;
+}
+
+.item-desc {
+	
+}
+
+.item-desc-table {
+	padding-right: 5px;
+	text-align: left;
+	vertical-align: top;
+	text-wrap: normal;
+	word-wrap: break-word;
+	font-size: 19px;
+}
+
+.fa-check {
+	padding-right: 5px;
+}
+
+.fa-check::before {
+	content: "\f00c";
+}
+
+.fa {
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 19px;
+    text-rendering: auto;
 }
 
 .profile-image-container {
