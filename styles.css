@@ -195,6 +195,12 @@ body {
 	overflow: hidden;
 }
 
+.portfolio-container-appendix {
+    margin: auto;
+	overflow: hidden;
+	display: none;
+}
+
 .row {
 	width: 1050px;
 	overflow: hidden;
