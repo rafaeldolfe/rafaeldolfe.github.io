@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "For Science",
+"productVersion": "0.1",
+"dataUrl": "WebGL Unity v2.3 (howtoplay).data.unityweb",
+"wasmCodeUrl": "WebGL Unity v2.3 (howtoplay).wasm.code.unityweb",
+"wasmFrameworkUrl": "WebGL Unity v2.3 (howtoplay).wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.2.17f1"
+}
