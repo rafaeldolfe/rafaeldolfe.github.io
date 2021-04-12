@@ -237,6 +237,27 @@
     </div>
   </section>
 
+  <section id="masters-thesis" class="section">
+    <div class="container">
+      <h1 class="title">Master's Thesis</h1>
+      <hr />
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-12">
+          <div class="tile">
+            <div class="tile is-parent">
+              <article class="tile is-child notification">
+                <p class="title">Mixed-Initiative Tile-Based Designer</p>
+                <figure class="image is-16by9">
+                  <img class="modal-trigger" data-target="project-thesis-1-modal" src="img/masters-thesis/mtd-thumbnail.png">
+                </figure>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="major-projects" class="section">
     <div class="container">
       <h1 class="title">Major Projects</h1>
@@ -510,6 +531,81 @@
       </nav>
     </div>
   </section>
+
+  <div id="project-thesis-1-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Mixed-Initiative Tile-Based Designer</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+
+        <div id="project-thesis-1-modal-carousel" class="carousel">
+          <figure class="image is-4by3 carousel-cell">
+            <img src="img/masters-thesis/mission-into-shape.png">
+          </figure>
+          <figure class="image is-4by3 carousel-cell">
+            <img src="img/masters-thesis/shape-into-level.png">
+          </figure>
+          <figure class="image is-4by3 carousel-cell">
+            <img src="img/masters-thesis/level-consists-of-macro-templates.png">
+          </figure>
+          <figure class="image is-4by3 carousel-cell">
+            <img src="img/masters-thesis/macro-template-into-micro.png">
+          </figure>
+          <figure class="image is-4by3 carousel-cell">
+            <img src="img/masters-thesis/micro-template-consists-of-probability-tiles.png">
+          </figure>
+        </div>
+
+        <div class="content">
+          <p><b>Mixed-Initiative Tile-Based Designer</b>
+            is a highly customizable framework for producing procedurally generated 2D maps. It does not require programming
+            knowledge to produce levels with, although building a game on top of the framework does. 
+            <br>
+            <br>
+            The framework uses a multi-layered approach to procedural content generation. First it produces a mission layout.
+            This mission layout is an abstract representation of the tasks that the player may encounter throughout
+            the level. On top of that is the space layer. This is yet another abstract layer. The purpose of this layer is to translate 
+            the mission layout into a 2D tile-based overview of the final map. Finally, the overview in the space layer is 
+            transformed into the final level. The final level is built out of macro-templates which may in turn be built out of micro-templates.
+            After the final level has been constructed out of the macro-templates, the level is finished.
+            
+            <br>
+            <br>
+            Every layer is customizable. The user designs:
+            <ul>
+              <li>Mission grammar rules from which the mission structure is derived</li>
+              <li>Shape grammar rules from which the space structure is derived</li>
+              <li>Macro-templates from which the level is derived</li>
+              <li>Micro-templates from which macro-templates may be partially derived</li>
+              <li>Probabilistic tiles which may randomize into any other tiles</li>
+            </ul>
+            <a target="_blank" href="https://www.youtube.com/watch?v=EuGOtGQj0i0">This video</a> gives a brief overview of this generation process.
+            <br>
+            <br>  
+            Please note that while the procedural generation process uses randomization, it can be partially or completely deterministic
+            if the user wishes to design it that way.
+            <br>
+            <br>
+          </p>            
+          <div class="tags">
+            <span class="tag">unity3d</span>
+            <span class="tag">c#</span>
+            <span class="tag">procedural-generation</span>
+            <span class="tag">tools-programming</span>
+            <span class="tag">framework</span>
+          </div>
+
+        </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Close</button>
+      </footer>
+    </div>
+  </div>
 
   <!-- Modals -->
   <div id="project-major-1-modal" class="modal">
