@@ -8,10 +8,124 @@
   <link href="img/profilbild.png" rel="icon" type="image/x-icon" />
   <link href="css/main.bundle.css" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/4e5a72c756.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Site-wide dark mode ─────────────────────────────── */
+    html, body { background-color: #07070e; color: #848280; }
+    .section { background-color: transparent !important; }
+
+    /* Typography */
+    .title  { color: #e0d5c5 !important; }
+    .subtitle { color: #9a9490 !important; }
+    p { color: #a8a4a0; }
+    strong, b { color: #c0b8ac; }
+    hr { background-color: rgba(255,255,255,0.07) !important; height: 1px !important; }
+
+    /* Cards / notification tiles */
+    .notification {
+      background-color: #0f0f17 !important;
+      color: #a8a4a0 !important;
+      border: 1px solid rgba(255,255,255,0.07) !important;
+      box-shadow: none !important;
+    }
+    .notification .title    { color: #e0d5c5 !important; }
+    .notification .subtitle { color: #9a9490 !important; }
+    .notification p, .notification li { color: #a8a4a0; }
+    .notification strong    { color: #c0b8ac; }
+
+    /* Tags / pills */
+    .tag:not(body) {
+      background-color: rgba(255,255,255,0.09) !important;
+      color: #908880 !important;
+    }
+
+    /* Rich text content */
+    .content       { color: #a8a4a0; }
+    .content strong { color: #c0b8ac; }
+    .content a      { color: #e0aa78; }
+    .content a:hover { color: #f0b860; }
+
+    /* Navbar — keep fully transparent on desktop so it overlays the hero cleanly */
+    .navbar, .navbar-menu, .navbar-brand, .navbar-item, .navbar-link {
+      background-color: transparent !important;
+    }
+    /* Mobile: give the slide-down menu a solid background so links are readable */
+    @media screen and (max-width: 1023px) {
+      .navbar-menu.is-active { background-color: #07070e !important; }
+    }
+
+    /* Experience / Education cards */
+    .card {
+      background-color: #0f0f17 !important;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.5) !important;
+      border: 1px solid rgba(255,255,255,0.07) !important;
+    }
+    .card-content  { background-color: transparent !important; }
+    .card-header   { background-color: transparent !important; border-bottom: 1px solid rgba(255,255,255,0.07) !important; }
+    .card-header-title { color: #e0d5c5 !important; }
+    .card-footer   { background-color: transparent !important; border-top: 1px solid rgba(255,255,255,0.07) !important; }
+    .card-footer-item { color: #848280 !important; border-right-color: rgba(255,255,255,0.07) !important; }
+
+    /* Modals — layout & colours */
+    .modal-card { max-width: 820px !important; width: calc(100vw - 48px) !important; border-radius: 4px !important; overflow: hidden !important; }
+    .modal-card-head  { background-color: #111118 !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; padding: 18px 24px !important; }
+    .modal-card-title { font-family: 'Syne', sans-serif !important; font-size: 17px !important; font-weight: 700 !important; color: #e0d5c5 !important; }
+    .modal-card-body  { background-color: #0d0d15 !important; padding: 0 !important; }
+    .modal-card-body .content { padding: 20px 24px 4px !important; }
+    .modal-card-foot  { background-color: #111118 !important; border-top: 1px solid rgba(255,255,255,0.08) !important; padding: 14px 24px !important; }
+    .modal-card-foot .button.is-success { background: transparent !important; border: 1px solid rgba(255,255,255,0.12) !important; color: #7a7470 !important; font-family: 'Space Mono',monospace !important; font-size: 8.5px !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; border-radius: 2px !important; box-shadow: none !important; height: auto !important; padding: 8px 16px !important; }
+    .modal-card-foot .button.is-success:hover { border-color: rgba(255,255,255,0.25) !important; color: #c0b8ac !important; }
+    .delete { background-color: rgba(255,255,255,0.15) !important; }
+    /* Carousel image fix — consistent height, object-fit cover */
+    .modal-card-body figure.carousel-cell,
+    .modal-card-body .carousel-cell { height: 400px !important; padding-top: 0 !important; padding-bottom: 0 !important; overflow: hidden; background: #06060d; position: relative; }
+    .modal-card-body figure.carousel-cell img,
+    .modal-card-body .carousel-cell img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: contain !important; object-position: center center !important; }
+    .modal-card-body figure.carousel-cell .card-content { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(5,5,12,0.72); padding: 8px 14px; z-index: 1; }
+    .modal-card-body figure.carousel-cell .item__title { color: #a0a09a; font-size: 10.5px; font-family: 'Space Mono',monospace; letter-spacing: 0.03em; }
+    /* Nostalgia tier */
+    .jam-card-fun { opacity: 0.55; transition: opacity 0.2s, border-color 0.15s; }
+    .jam-card-fun:hover { opacity: 0.8; }
+    /* Modal body scrollbar */
+    .modal-card-body { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent; }
+    .modal-card-body::-webkit-scrollbar { width: 3px; }
+    .modal-card-body::-webkit-scrollbar-track { background: transparent; }
+    .modal-card-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+    /* Thesis modal — text-left, gallery-right, single scroll */
+    .tm-layout { display: flex; align-items: stretch; height: clamp(440px, 60vh, 540px); }
+    /* LEFT: text + meta, single scrollable column */
+    .tm-left { flex: 1; display: flex; flex-direction: column; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.08) transparent; }
+    .tm-left::-webkit-scrollbar { width: 3px; }
+    .tm-left::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+    /* RIGHT: gallery, fixed width, no scroll */
+    .tm-right { width: 42%; flex-shrink: 0; background: #06060d; border-left: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; overflow: hidden; }
+    .tm-main { width: 100%; flex: 1; min-height: 0; object-fit: contain; display: block; object-position: center center; background: #06060d; }
+    .tm-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: rgba(0,0,0,0.22); border-top: 1px solid rgba(255,255,255,0.04); flex-shrink: 0; }
+    .tm-nav-btn { background: transparent; border: 1px solid rgba(255,255,255,0.12); color: #a0a09a; font-size: 13px; width: 26px; height: 26px; border-radius: 2px; cursor: pointer; transition: border-color 0.15s, color 0.15s; line-height: 1; }
+    .tm-nav-btn:hover { border-color: rgba(255,255,255,0.3); color: #e0d5c5; }
+    .tm-nav-count { font-family: 'Space Mono', monospace; font-size: 9px; color: #5a5450; letter-spacing: 0.08em; }
+    .tm-thumbs { display: flex; gap: 4px; padding: 6px 8px; background: rgba(0,0,0,0.3); overflow-x: auto; scrollbar-width: thin; flex-shrink: 0; }
+    .tm-thumbs::-webkit-scrollbar { height: 2px; }
+    .tm-thumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+    .tm-thumb { height: 48px; flex-shrink: 0; aspect-ratio: 4/3; object-fit: cover; cursor: pointer; border: 2px solid transparent; border-radius: 2px; opacity: 0.42; transition: opacity 0.15s, border-color 0.15s; }
+    .tm-thumb:hover { opacity: 0.72; }
+    .tm-thumb.tm-active { border-color: #e0aa78; opacity: 1; }
+    .tm-content { padding: 20px 20px 16px !important; flex: 1; }
+    .tm-section-hdr { font-family: 'Space Mono', monospace !important; font-size: 8.5px !important; letter-spacing: 0.15em !important; text-transform: uppercase !important; color: #e0aa78 !important; opacity: 0.7; margin: 16px 0 8px !important; font-weight: 400 !important; }
+    .tm-meta { display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px; padding: 14px 20px; border-top: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
+    .tm-meta-item { display: flex; flex-direction: column; gap: 3px; }
+    .tm-meta-lbl { font-family: 'Space Mono', monospace; font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #5a5450; }
+    .tm-meta-val { font-size: 11.5px; color: #b8b0a8; }
+    .tm-cited { color: #e0aa78 !important; }
+    @media (max-width: 640px) { .tm-layout { flex-direction: column; height: auto; } .tm-right { width: 100%; overflow: visible; } .tm-left { overflow-y: visible; } }
+    /* Arch grid shifts when panel opens */
+    #arch-grid { transition: padding-right 0.35s cubic-bezier(0.22,1,0.36,1); }
+    #arch-grid.panel-open { padding-right: 395px; }
+  </style>
 </head>
 
 <body>
-  <nav aria-label="main navigation" class="navbar is-primary" role="navigation">
+  <nav aria-label="main navigation" class="navbar" role="navigation" style="position:absolute;top:0;left:0;right:0;z-index:10;background:transparent;border-bottom:none;">
     <div class="navbar-brand">
       <div class="navbar-item is-hidden-desktop">
         <a class="icon is-large has-text-light" href="https://github.com/rafaeldolfe">
@@ -39,33 +153,173 @@
       </div>
     </div>
   </nav>
-  <section class="hero is-primary">
-    <div class="hero-body">
-      <div class="container">
-        <div class="level">
-          <div class="level-item has-text-centered">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="img/profilbild.png" />
-            </figure>
-          </div>
+  <section id="lito-hero">
+    <style>
+      html { scroll-behavior: smooth; }
+      #lito-hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 520px;
+        overflow: hidden;
+        background: #07070e;
+      }
+      .lito-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('img/lito_gameplay.jpg');
+        background-size: cover;
+        background-position: center top;
+      }
+      .lito-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(5,5,12,0.97) 0%,
+          rgba(5,5,12,0.72) 28%,
+          rgba(5,5,12,0.25) 52%,
+          transparent 72%
+        );
+      }
+      .lito-content {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 1400px;
+        padding: 0 52px 40px;
+        z-index: 2;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+      }
+      .lito-identity { flex: 1; min-width: 260px; }
+      .lito-game-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #e0aa78;
+        opacity: 0.8;
+        margin-bottom: 6px;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+      }
+      .lito-dev-name {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(28px, 3.6vw, 48px);
+        font-weight: 800;
+        color: #e0d5c5;
+        line-height: 1.1;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+      }
+      .lito-dev-role {
+        font-family: 'Space Mono', monospace;
+        font-size: 13px;
+        color: #b8b0a4;
+        letter-spacing: 0.06em;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+      }
+      .lito-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 14px;
+        padding-bottom: 4px;
+      }
+      .lito-stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+      .lito-stat {
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #e0d5c5;
+        padding: 5px 12px;
+        border: 1px solid rgba(224,170,120,0.35);
+        border-radius: 2px;
+        background: rgba(0,0,0,0.45);
+        white-space: nowrap;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+      }
+      .lito-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+      .lito-btn-primary {
+        font-family: 'Syne', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 12px 26px;
+        background: #e0aa78;
+        color: #07070e;
+        text-decoration: none;
+        transition: background 0.15s;
+        white-space: nowrap;
+        display: inline-block;
+      }
+      .lito-btn-primary:hover { background: #efc08a; color: #07070e; }
+      .lito-btn-secondary {
+        font-family: 'Syne', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 11px 24px;
+        background: rgba(0,0,0,0.35);
+        color: #e0d5c5;
+        border: 1px solid rgba(224,213,197,0.45);
+        text-decoration: none;
+        transition: border-color 0.15s, background 0.15s;
+        white-space: nowrap;
+        display: inline-block;
+      }
+      .lito-btn-secondary:hover { border-color: rgba(224,213,197,0.75); background: rgba(0,0,0,0.5); color: #e0d5c5; }
+      .lito-btn-ghost {
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        padding: 11px 14px;
+        color: #a09890;
+        text-decoration: none;
+        transition: color 0.15s;
+        display: inline-block;
+        white-space: nowrap;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+      }
+      .lito-btn-ghost:hover { color: #c8c0b4; }
+      @media (max-width: 700px) {
+        .lito-content { padding: 0 24px 28px; flex-direction: column; align-items: flex-start; }
+        .lito-right { align-items: flex-start; }
+        .lito-stats, .lito-actions { justify-content: flex-start; }
+      }
+    </style>
+
+    <div class="lito-bg"></div>
+    <div class="lito-overlay"></div>
+
+    <div class="lito-content">
+      <div class="lito-identity">
+        <p class="lito-game-label">Lost In The Open · Black Voyage Games</p>
+        <h1 class="lito-dev-name">Rafael Dolfe</h1>
+        <p class="lito-dev-role">Unity Developer &middot; C# &middot; Game Systems</p>
+      </div>
+      <div class="lito-right">
+        <div class="lito-stats">
+          <span class="lito-stat">20k wishlists</span>
+          <span class="lito-stat">88% positive (EN)</span>
+          <span class="lito-stat">Covered by SplatterCatGaming (950k subs)</span>
         </div>
-        <div class="columns has-text-centered">
-          <div class="column">
-            <h1 class="title is-1">
-              Rafael Dolfe
-            </h1>
-            <h2 class="subtitle">
-              Game Programmer, Frontend Dev, C# Dev
-            </h2>
-            <p>
-              <a class="icon has-text-light" href="docs/resume.pdf">
-                <strong>Resume</strong>
-              </a>
-            </p>
-          </div>
+        <div class="lito-actions">
+          <a href="https://www.youtube.com/watch?v=I1yuby2Grmg" target="_blank" class="lito-btn-primary">&#9654; Watch Trailer</a>
+          <a href="https://store.steampowered.com/app/2027380/Lost_In_The_Open/" target="_blank" class="lito-btn-secondary">Steam Page &#8599;</a>
         </div>
       </div>
     </div>
+
   </section>
   <section class="section">
     <div class="container">
@@ -73,33 +327,29 @@
       <hr />
       <p>
 
-      <p>I'm Rafael, a master's graduate at KTH: Royal Institute of Technology specialized in graphics and
-        human-computer interaction.
-        My coding interest began early.
-        I always loved working on computer games, making original maps using level editors from various games.
-        I was first exposed to code in a level editor for a game called Neverwinter Nights, which employed C++ code.
-        That was back when I was 10 years old.
+      <p>I’m Rafael, a master’s graduate from KTH Royal Institute of Technology.
+        My coding interest began early. I was first exposed to code at age 10 in a level editor for Neverwinter Nights.
         From then on, programming gripped my interest.
-        I spent the summers in 2012-2014 immersed in the development of a custom mod to Amnesia,
-        which managed to provide some <a target="_blank"
-          href="https://www.youtube.com/watch?t=377&v=gSs5oXne6e8&feature=youtu.be">much-appreciated</a>
-        gameplay experiences in <a href="#major-projects">Confusion: An atmospheric custom story</a>.
-        Since then, I have taken my interest for software development into the professional world, working as a game
-        developer, frontend developer and backend developer at various projects.
-        I’ve built procedural generation, AI/state machines, UI, networking, and performance‑minded architecture across
-        indie and studio work.
+        I spent the summers of 2012–2014 building a custom mod for Amnesia, which earned some
+        <a target="_blank" href="https://www.youtube.com/watch?t=377&v=gSs5oXne6e8&feature=youtu.be">much-appreciated</a>
+        attention in <a href="#major-projects">Confusion: An Atmospheric Custom Story</a>.
 
         <br />
         <br />
 
-        I have worked as an IT Consultant for companies like Toca Boca and Bokadirekt.
-        In 2025 I led the Early Access launch of <em>Lost In The Open</em> as technical lead. I collaborate tightly
-        across design, art, production, and backend to turn ideas into reliable, testable features.
-        I particularly enjoy working with projects that have a positive mission behind them.
+        Since then I’ve shipped systems professionally: gameplay, AI, procedural generation, networking, UI, and
+        editor tooling across indie and studio projects.
+        Most recently I led <em><a href="https://store.steampowered.com/app/2027380/Lost_In_The_Open/" target="_blank">Lost In The Open</a></em>
+        from inception to Steam Early Access: a tactical roguelike built in Unity over 6 years, covering the full
+        technical stack. Featured by SplatterCatGaming (950k subscribers); 20k wishlists;
+        88% positive with English-speaking players.
       </p>
       <br />
       <p style="text-align: center;">Please feel free to <a class="running-link" href="#social-icons">contact</a> me for
         any inquiries.</p>
+      <p style="margin-top:18px;">
+        <a href="docs/resume.pdf" class="lito-btn-ghost" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;padding:9px 18px;border-radius:3px;border:1px solid rgba(224,170,120,0.35);color:#e0aa78;text-decoration:none;letter-spacing:0.08em;font-family:'Space Mono',monospace;transition:background 0.15s;" onmouseover="this.style.background='rgba(224,170,120,0.08)'" onmouseout="this.style.background='transparent'">&#8595; Download Resume</a>
+      </p>
     </div>
   </section>
   <section class="section">
@@ -115,30 +365,29 @@
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4">Lost In The Open — Black Voyage Games</p>
-              <p class="subtitle is-6">Unity Developer / Team Lead — <time datetime="2020-01">Q1 2020</time> –
-                <time datetime="2025-10">Q4 2025</time>
+              <p class="title is-4">Lost In The Open: Black Voyage Games</p>
+              <p class="subtitle is-6">Lead Unity Developer / Technical Lead, <time datetime="2020-01">Q1 2020</time> –
+                <time datetime="2026-01">Q1 2026</time>
               </p>
             </div>
           </div>
           <div class="content">
-            <p>Low‑fantasy tactical roguelike released in Early Access (2025). Led a remote team of 8 and built the game
-              from the ground up. The game is available to purchase on Steam and a demo is available: <a
-                href="https://store.steampowered.com/app/2027380/Lost_In_The_Open/">https://store.steampowered.com/app/2027380/Lost_In_The_Open/</a>
+            <p>Low‑fantasy tactical roguelike released on Steam Early Access in September 2025. Led the full technical
+              direction from prototype to launch. <a href="https://store.steampowered.com/app/2027380/Lost_In_The_Open/" target="_blank">Available on Steam.</a>
             </p>
             <ul>
-              <li>Approximately 75% positive reviews overall (96% West / 67% East); 18k wishlists; Was on Steam's
-                <em>Popular
-                  Upcoming</em>; published by Whisper Games.</li>
-              <li>Systems: inventory, character progression, AI, pathfinding, fog of war, event‑driven UI, save/load,
-                world &amp; terrain procedural generation.</li>
-              <li>Editor tools enabling non‑programmers to author levels, scenarios, units, and other things.</li>
+              <li>Featured by SplatterCatGaming (950k subscribers), two dedicated videos. 20k wishlists; 88% positive with English-speaking players.</li>
+              <li>Built core systems from scratch: combat AI, hex-grid pathfinding, fog of war, procedural world generation, event-driven architecture, Wwise audio, Spine animation, save/load, and full in-game UI.</li>
+              <li>Large suite of custom Unity editor tools enabling non-programmers to author levels, scenarios, units, and dialogue without any code.</li>
             </ul>
             <div class="tags">
               <span class="tag">unity3d</span>
               <span class="tag">c#</span>
+              <span class="tag">.net</span>
               <span class="tag">procedural-generation</span>
               <span class="tag">ai</span>
+              <span class="tag">wwise</span>
+              <span class="tag">spine</span>
               <span class="tag">tools</span>
               <span class="tag">leadership</span>
             </div>
@@ -155,7 +404,7 @@
             </div>
             <div class="media-content">
               <p class="title is-4">Toca Boca</p>
-              <p class="subtitle is-6">Unity Developer — <time datetime="2023-07">Q3 2023</time> – <time
+              <p class="subtitle is-6">Unity Developer, <time datetime="2023-07">Q3 2023</time> – <time
                   datetime="2024-06">Q2 2024</time></p>
             </div>
           </div>
@@ -189,7 +438,7 @@
             </div>
             <div class="media-content">
               <p class="title is-4">Bokadirekt</p>
-              <p class="subtitle is-6">Frontend Developer — <time datetime="2022-04">Q2 2022</time> – <time
+              <p class="subtitle is-6">Frontend Developer, <time datetime="2022-04">Q2 2022</time> – <time
                   datetime="2022-12">Q4 2022</time></p>
             </div>
           </div>
@@ -222,7 +471,7 @@
             </div>
             <div class="media-content">
               <p class="title is-4">Netlight</p>
-              <p class="subtitle is-6">Unity Developer — <time datetime="2021-10">Q4 2021</time> – <time
+              <p class="subtitle is-6">Unity Developer, <time datetime="2021-10">Q4 2021</time> – <time
                   datetime="2022-03">Q1 2022</time></p>
             </div>
           </div>
@@ -248,53 +497,725 @@
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
+                <img alt="Placeholder image" src="img/universities/kth_logo.png" />
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">KTH Royal Institute of Technology</p>
+              <p class="subtitle is-6">Algorithm / Unity Developer, <time datetime="2021-01">Q1 2021</time> –
+                <time datetime="2021-09">Q3 2021</time>
+              </p>
+            </div>
+          </div>
+          <div class="content">
+            <p>Research role developing open-source procedural tooling for Unity as part of master's thesis work.</p>
+            <ul>
+              <li>Created the <em>Mixed-Initiative Tile-Based Designer</em>, a procedural framework for 2D level design in Unity, enabling human-AI collaborative map creation.</li>
+              <li>Adopted by academic work and cited in IEEE research (2025).</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">unity3d</span>
+              <span class="tag">c#</span>
+              <span class="tag">procedural-generation</span>
+              <span class="tag">algorithms</span>
+              <span class="tag">research</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-gap">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
                 <img alt="Placeholder image" src="img/ef_logo.png" />
               </figure>
             </div>
             <div class="media-content">
               <p class="title is-4">EF Education First</p>
-              <p class="subtitle is-6">Front End Developer Intern — <time datetime="2019-6">June 2019</time> — <time
-                  datetime="2019-8">August 2019</time> </p>
+              <p class="subtitle is-6">Fullstack Developer Intern, <time datetime="2019-6">Q2 2019</time> –
+                <time datetime="2019-8">Q3 2019</time>
+              </p>
             </div>
           </div>
           <div class="content">
-            <p>Languages and Tools Utilized: JavaScript, Angular, Azure Portal and DevOps, Node.js, REST API</p>
+            <p>Built a fullstack feature-toggle platform to improve control over feature development on a large frontend monorepo.</p>
             <ul>
-              <li>Coded an Angular CRUD application where developers can create, read, toggle and delete features</li>
-              <li>Created a Node.js server to handle the requests from the application</li>
-              <li>Gained practical experience with the Agile methodology through Jira</li>
+              <li>Built a Node.js + TypeScript REST API and an Angular CRUD app for toggling features across the codebase.</li>
+              <li>Deployed Azure services and configured three Azure DevOps pipelines; implemented Azure Active Directory, CORS, and automated Jasmine/Karma unit tests.</li>
             </ul>
             <div class="tags">
-              <span class="tag">javascript</span>
+              <span class="tag">typescript</span>
               <span class="tag">angular</span>
+              <span class="tag">nodejs</span>
               <span class="tag">azure</span>
               <span class="tag">devops</span>
-              <span class="tag">nodejs</span>
               <span class="tag">rest</span>
-              <span class="tag">jira</span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ── Lost In The Open — Technical Architecture Mindmap ────────────────── -->
+  <section id="mindmap-section">
+    <style>
+      #mindmap-section { width:100%; background:#0a0a0f; font-family:'Space Mono',monospace; position:relative; }
+
+      #arch-hdr { padding:30px 40px 26px; border-bottom:1px solid rgba(255,255,255,0.05); max-width:1400px; margin:0 auto; width:100%; box-sizing:border-box; }
+      .arch-lbl { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.28em; text-transform:uppercase; color:#f0b860; opacity:0.7; margin-bottom:6px; }
+      .arch-ttl { font-family:'Syne',sans-serif; font-size:42px; font-weight:700; color:#e0d5c5; margin-bottom:8px; line-height:1; }
+      .arch-sub { font-size:10px; color:#828880; letter-spacing:0.06em; }
+
+      #arch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); max-width:1400px; margin:0 auto; width:100%; box-sizing:border-box; }
+      .arch-card { border-right:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); transition:background 0.15s; }
+      .arch-card:hover { background:rgba(255,255,255,0.018); }
+      .arch-card-hdr { padding:14px 20px 12px; border-left:3px solid var(--accent); border-bottom:1px solid rgba(255,255,255,0.04); display:flex; align-items:baseline; gap:8px; cursor:pointer; user-select:none; }
+      .arch-card-name { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--accent); }
+      .arch-card-ct { font-size:9px; letter-spacing:0.1em; color:var(--accent); opacity:0.32; margin-left:auto; }
+      .arch-feats { padding:10px 20px 16px; list-style:none; margin:0; display:flex; flex-direction:column; gap:1px; }
+      .arch-feat { font-size:10.5px; line-height:1.5; color:#9a9490; display:flex; align-items:baseline; gap:8px; cursor:pointer; padding:4px 0; transition:color 0.1s; }
+      .arch-feat:hover { color:#c8c0b4; }
+      .arch-feat-dot { flex-shrink:0; font-size:8px; color:rgba(255,255,255,0.18); }
+      .arch-feat.notable { color:#b0a898; }
+      .arch-feat.notable .arch-feat-dot { color:#c060e0; }
+      .arch-feat.notable:hover { color:#e0d5c5; }
+
+      #arch-panel { position:fixed; top:0; right:0; width:380px; height:100%; background:rgba(8,8,16,0.97); border-left:1px solid rgba(224,170,120,0.15); z-index:200; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1); display:flex; flex-direction:column; backdrop-filter:blur(16px); overflow:hidden; }
+      #arch-panel.open { transform:translateX(0); }
+      #ap-accent { height:3px; width:100%; flex-shrink:0; background:linear-gradient(90deg,#e0aa78,transparent); }
+      #ap-close { position:absolute; top:18px; right:18px; width:28px; height:28px; border-radius:50%; background:rgba(224,170,120,0.1); border:1px solid rgba(224,170,120,0.2); color:#e0aa78; font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.15s; z-index:2; font-family:'Syne',sans-serif; }
+      #ap-close:hover { background:rgba(224,170,120,0.25); }
+      #ap-body { padding:56px 26px 40px; overflow-y:auto; flex:1; }
+      #ap-body::-webkit-scrollbar { width:3px; }
+      #ap-body::-webkit-scrollbar-track { background:transparent; }
+      #ap-body::-webkit-scrollbar-thumb { background:rgba(224,170,120,0.2); border-radius:2px; }
+      #ap-tier { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:#e0aa78; opacity:0.5; margin-bottom:10px; }
+      #ap-label { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#e0d5c5; line-height:1.15; margin-bottom:14px; }
+      #ap-cat { display:inline-block; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:rgba(100,168,212,0.1); border:1px solid rgba(100,168,212,0.2); color:#64a8d4; margin-bottom:18px; }
+      #ap-desc { font-size:11px; line-height:1.85; color:#c0b8ac; margin-bottom:22px; }
+      .ap-sect { margin-bottom:20px; }
+      .ap-sect-title { font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:#e0aa78; opacity:0.55; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid rgba(224,170,120,0.12); }
+      .ap-tag { display:inline-block; font-size:8px; letter-spacing:0.1em; text-transform:uppercase; padding:2px 7px; margin:2px; border-radius:2px; background:rgba(114,196,114,0.08); border:1px solid rgba(114,196,114,0.18); color:#72c472; }
+      .ap-tag.bold { background:rgba(192,96,224,0.08); border-color:rgba(192,96,224,0.25); color:#c060e0; }
+      .ap-link { display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:3px; background:rgba(224,170,120,0.06); border:1px solid rgba(224,170,120,0.15); color:#e0aa78; font-size:10px; text-decoration:none; letter-spacing:0.05em; transition:background 0.15s; margin-bottom:6px; }
+      .ap-link:hover { background:rgba(224,170,120,0.14); }
+      #ap-img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-radius:2px; margin-bottom:20px; }
+    </style>
+
+    <div id="arch-hdr">
+      <p class="arch-lbl">Flagship Project &middot; Technical Architecture &middot; Lost In The Open</p>
+      <h2 class="arch-ttl">System Map</h2>
+      <p class="arch-sub">7 systems &middot; 42 documented features &middot; built over 6 years &middot; click any feature to read more</p>
+    </div>
+
+    <div id="arch-grid"></div>
+
+    <div id="arch-panel">
+      <div id="ap-accent"></div>
+      <button id="ap-close" onclick="closeArchPanel()">&#x2715;</button>
+      <div id="ap-body">
+        <img id="ap-img" src="" alt="" style="display:none" />
+        <div id="ap-tier"></div>
+        <div id="ap-label"></div>
+        <div id="ap-cat"></div>
+        <div id="ap-desc"></div>
+        <div id="ap-links-wrap" class="ap-sect" style="display:none">
+          <div class="ap-sect-title">Links</div>
+          <div id="ap-links"></div>
+        </div>
+        <div id="ap-tags-wrap" class="ap-sect" style="display:none">
+          <div class="ap-sect-title">Tech</div>
+          <div id="ap-tags"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    const CAT_COLORS = {
+      exp:   '#4a9e78',
+      cbt:   '#c04848',
+      rpg:   '#7050b8',
+      audio: '#38a8a8',
+      ui:    '#4880c0',
+      core:  '#c87828',
+      tools: '#5a9050',
+    };
+
+    const NODES = [
+      // ── TIER 1 ──────────────────────────────────────────────────────────────
+      {
+        id:"root", tier:1,
+        label:"Lost In The Open", cat:"",
+        desc:"A tactical roguelike released on Steam Early Access in September 2025. Built solo over 6 years, covering engine, gameplay, AI, audio, UI, tools, and the full release pipeline.",
+        youtube:"",
+        links:[
+          { label:"Steam Page",              url:"https://store.steampowered.com/app/2027380/Lost_In_The_Open/" },
+          { label:"SplatterCatGaming Feature", url:"https://youtube.com" },
+        ],
+        tags:["Unity","C#",".NET","Steam"],
+        x:0, y:0, pinned:true,
+      },
+
+      // ── TIER 2 — Categories ──────────────────────────────────────────────────
+      {
+        id:"exp", tier:2, label:"Exploration", cat:"Category",
+        img:"img/sys_exploration.png",
+        desc:"The overworld layer: procedurally generated maps, randomised event graphs, a branching dialogue system, and a hex-grid movement system.",
+        tags:["Procedural Gen","Event Graphs","Hex Grid"],
+        x:-420, y:-200,
+      },
+      {
+        id:"cbt", tier:2, label:"Combat", cat:"Category",
+        img:"img/sys_combat.png",
+        desc:"Tactical combat on an octagonal grid with initiative-based turn order, fog of war, a full ability/effect stack, utility-based enemy AI, and Spine-animated units.",
+        tags:["Octagonal Grid","AI","Spine"],
+        x:-420, y:200,
+      },
+      {
+        id:"rpg", tier:2, label:"Progression / RPG", cat:"Category",
+        img:"img/sys_rpg.png",
+        desc:"Character growth, leadership layers, equipment, trading, and the cross-system injury and permadeath mechanic.",
+        tags:["RPG","Leadership","Equipment"],
+        x:0, y:-380,
+      },
+      {
+        id:"audio", tier:2, label:"Audio", cat:"Category",
+        desc:"Full Wwise integration for music and SFX. Adaptive music system driven by game state, faction, and outcome. Custom contextual sound system varying audio by weapon type, surface, and result.",
+        tags:["Wwise","Adaptive Music","Contextual Audio"],
+        x:420, y:-200,
+      },
+      {
+        id:"ui", tier:2, label:"UI Systems", cat:"Category",
+        img:"img/sys_ui.png",
+        desc:"Modular UI architecture powering every game state (main menu, exploration, and combat), built to eliminate monolithic scripts and missing reference errors.",
+        tags:["UGUI","Architecture"],
+        x:420, y:200,
+      },
+      {
+        id:"core", tier:2, label:"Core Engine", cat:"Category",
+        img:"img/sys_core.png",
+        desc:"Event-driven architecture, shared A* pathfinding, contextual tutorial system, scene transitions, difficulty integration, save/load, localisation with Google Sheets sync, and Addressables.",
+        tags:["Architecture","C#","Addressables","A*","Dijkstra"],
+        x:0, y:380,
+      },
+      {
+        id:"tools", tier:2, label:"Dev Tools", cat:"Category",
+        img:"img/sys_tools.png",
+        desc:"A large suite of custom Unity editor tools, an automated build pipeline, a comprehensive debug mode, and a no-code scenario creator for the game writer.",
+        tags:["Editor Tools","Build Pipeline","Automation"],
+        x:0, y:-155,
+      },
+
+      // ── TIER 3 — Exploration ─────────────────────────────────────────────────
+      {
+        id:"procgen", tier:3, label:"Procedural World Map", cat:"Exploration", bold:true,
+        desc:"Biome, terrain, and path generation that produces a unique overworld each run. Controls the spatial layout on which the event graph is overlaid.",
+        tags:["Procedural Gen","C#"],
+        x:-620, y:-380,
+      },
+      {
+        id:"evtgraph", tier:3, label:"Event Graph", cat:"Exploration", bold:true,
+        desc:"A randomised graph of events and encounters placed on top of the procedural world. Controls narrative pacing and the player's strategic decision points each run.",
+        x:-700, y:-260,
+      },
+      {
+        id:"dialogue", tier:3, label:"Dialogue System", cat:"Exploration", bold:true,
+        desc:"Branching dialogue system fully integrated with the enemy unit spawn system. Encounters can transition directly from narrative into tactical combat.",
+        x:-740, y:-130,
+      },
+      {
+        id:"expui", tier:3, label:"Exploration UI", cat:"Exploration",
+        desc:"All overworld and map-layer UI: travel controls, event cards, resource display, and party overview.",
+        x:-700, y:10,
+      },
+      {
+        id:"expgrid", tier:3, label:"Hex Grid", cat:"Exploration",
+        desc:"Hex-tile grid system for overworld movement. Each tile has terrain type, movement cost, and visibility properties. The hex layout defines reachability and strategic decision points on the exploration map.",
+        tags:["Hex Math"],
+        x:-620, y:130,
+      },
+      {
+        id:"fortunes", tier:3, label:"Fortunes & Predicaments", cat:"Exploration",
+        desc:"Contextual buffs and debuffs earned through scenario choices. The outcome of a decision reflects the choice itself: leaving a location early might grant a speed bonus; lingering to investigate might carry a penalty into the next encounter. Every fork in an event has potential consequences beyond the immediate narrative.",
+        x:-540, y:220,
+      },
+
+      // ── TIER 3 — Combat ──────────────────────────────────────────────────────
+      {
+        id:"cbtgrid", tier:3, label:"Octagonal Combat Grid", cat:"Combat", bold:true,
+        desc:"Square tile grid with full 8-directional movement (cardinal and diagonal). Each cell tracks occupancy, terrain cost, and blocking. Powers all tactical positioning, attack range checks, and area-of-effect calculations.",
+        tags:["Grid Math"],
+        x:-640, y:300,
+      },
+      {
+        id:"turnsys", tier:3, label:"Round & Turn System", cat:"Combat",
+        desc:"Initiative-based turn ordering, action economy (move + action), and round lifecycle events that other systems hook into via the event bus.",
+        x:-680, y:420,
+      },
+      {
+        id:"fow", tier:3, label:"Fog of War", cat:"Combat",
+        desc:"Tile-based visibility system using line-of-sight calculations. Tiles transition between Unseen, Explored, and Visible states, creating genuine tactical uncertainty across every combat encounter.",
+        tags:["Line-of-Sight","Shaders"],
+        x:-620, y:530,
+      },
+      {
+        id:"ability", tier:3, label:"Ability System", cat:"Combat", bold:true,
+        desc:"Data-driven ability authoring and resolution pipeline. Abilities declare targeting rules, costs, and effect payloads, resolved by a central combat mediator.",
+        x:-480, y:600,
+      },
+      {
+        id:"effect", tier:3, label:"Effect System", cat:"Combat", bold:true,
+        desc:"Status effects, buffs, debuffs, and persistent conditions that stack, tick, and expire cleanly across turns without coupling between systems.",
+        x:-340, y:640,
+      },
+      {
+        id:"rpgsys", tier:3, label:"RPG Stats", cat:"Combat",
+        desc:"Full RPG stat block: damage, crit chance, health, armour, initiative, dodge, block, and accuracy, all exposed to the ability and effect systems.",
+        x:-200, y:630,
+      },
+      {
+        id:"enemyai", tier:3, label:"Enemy AI", cat:"Combat", bold:true,
+        desc:"Two-phase AI: brute-force evaluation for small action spaces, utility-based scoring for complex decisions. Each enemy archetype has a weighted behaviour profile that produces distinct tactical personalities.",
+        tags:["Utility AI","State Machines"],
+        x:-80, y:600,
+      },
+      {
+        id:"spine", tier:3, label:"Spine Animation", cat:"Combat",
+        desc:"Runtime Spine skeleton integration for all unit animations: attacks, idles, deaths. Animation triggers driven by combat events via the event bus.",
+        x:60, y:560,
+      },
+      {
+        id:"cbtui", tier:3, label:"Combat UI", cat:"Combat",
+        desc:"In-battle HUD: ability bar, turn order tracker, unit health frames, targeting preview, and live combat log.",
+        x:160, y:510,
+      },
+      {
+        id:"fgfade", tier:3, label:"Foreground Fading", cat:"Combat",
+        desc:"2.5D system for intelligently fading trees and buildings when units stand behind them. Dual-shader approach: a fade shader + stump indicator shader. Fully supports mouse hover interaction.",
+        tags:["Shader Graph","2.5D"],
+        x:240, y:450,
+      },
+      {
+        id:"injury", tier:3, label:"Injury & Permadeath", cat:"Combat",
+        desc:"Damage-type-based injury system with three states: Temporary, Treated, Permanent. Medical supplies are a strategic resource. Permanent injuries accumulate and permadeath creates lasting consequences.",
+        x:300, y:380,
+      },
+
+      // ── TIER 3 — Progression ─────────────────────────────────────────────────
+      {
+        id:"levelup", tier:3, label:"Level Up System", cat:"Progression", bold:true,
+        desc:"Experience gain and character advancement, tying into leadership insight and tactic unlocks.",
+        x:180, y:-500,
+      },
+      {
+        id:"insights", tier:3, label:"Leadership Insights", cat:"Progression",
+        desc:"Passive leadership-layer perks that modify strategic decisions and subtly alter unit behaviour over a run.",
+        x:80, y:-560,
+      },
+      {
+        id:"tactics", tier:3, label:"Leadership Tactics", cat:"Progression",
+        desc:"Active tactical abilities unlocked through leadership progression, deployable in combat for high-impact strategic plays.",
+        x:-60, y:-580,
+      },
+      {
+        id:"equip", tier:3, label:"Equipment System", cat:"Progression",
+        desc:"Armour, weapon, and item slots with stat modifiers and ability unlocks. Equipment found through exploration and trade.",
+        x:-190, y:-560,
+      },
+      {
+        id:"trade", tier:3, label:"Trading System", cat:"Progression",
+        desc:"Economy, vendor interaction, and resource exchange between exploration events. Strategic choices about what to buy and sell shape each run.",
+        x:-300, y:-510,
+      },
+      {
+        id:"items", tier:3, label:"Item System", cat:"Progression",
+        desc:"Each unit carries up to two items that slot into dedicated item slots and apply persistent effects. Most items grant stat bonuses (damage, armour, initiative, etc.); rarer items carry special on-hit or on-turn effects. Items are found as drops from completing scenarios or purchased from traders during exploration.",
+        x:-390, y:-450,
+      },
+
+      // ── TIER 3 — Audio ───────────────────────────────────────────────────────
+      {
+        id:"music", tier:3, label:"Music System", cat:"Audio",
+        desc:"State-driven music system that selects and transitions tracks based on context: enemy faction encountered, current game layer (menu, exploration, or combat), scenario threat level (tough vs. regular), and combat outcome (victory or defeat). All driven through Wwise states and switches.",
+        tags:["Wwise","Adaptive Music"],
+        x:500, y:-420,
+      },
+      {
+        id:"wwise", tier:3, label:"Wwise Integration", cat:"Audio", bold:true,
+        desc:"Full Audiokinetic Wwise pipeline for music (adaptive, state-driven) and all SFX. Combat events automatically trigger audio state changes via the event bus.",
+        tags:["Wwise","Adaptive Music"],
+        x:580, y:-320,
+      },
+      {
+        id:"cxsound", tier:3, label:"Contextual Sound System", cat:"Audio",
+        desc:"Weapon type x target surface (armour/flesh) x outcome (hit/miss) variation matrix, producing highly varied, believable combat audio without any manual per-case curation.",
+        x:660, y:-210,
+      },
+
+      // ── TIER 3 — UI ──────────────────────────────────────────────────────────
+      {
+        id:"mainmenu", tier:3, label:"Main Menu UI", cat:"UI",
+        desc:"Title screen, settings panel, save slot selection, and all top-level navigation flows.",
+        x:620, y:-60,
+      },
+      {
+        id:"modul", tier:3, label:"Modularised UI System", cat:"UI", bold:true,
+        desc:"Dynamic child-script discovery via C# interfaces. Parent UI controllers locate child panels at runtime. Hierarchical control, zero direct references, and no missing-component errors at scale.",
+        tags:["C# Interfaces","Architecture"],
+        x:680, y:80,
+      },
+
+      // ── TIER 3 — Core Engine ─────────────────────────────────────────────────
+      {
+        id:"evtbus", tier:3, label:"Event-Driven Architecture", cat:"Core", bold:true,
+        desc:"C# events + a custom event bus that fully decouples all major systems. Combat, audio, UI, and animation all react to the same events without any direct coupling between them.",
+        tags:["Observer Pattern","C#"],
+        x:200, y:520,
+      },
+      {
+        id:"pathfinding", tier:3, label:"Pathfinding (A* & Dijkstra)", cat:"Core", bold:true,
+        desc:"Shared pathfinding used by both the exploration layer and tactical combat. A* for movement with heuristic guidance; Dijkstra for range and reachability queries where all valid destinations are needed. Supports variable movement costs, dynamic obstacle blocking, and unit collision avoidance.",
+        tags:["A*","Dijkstra","Algorithms"],
+        x:80, y:570,
+      },
+      {
+        id:"tutorial", tier:3, label:"Tutorial System", cat:"Core",
+        desc:"Notification-driven contextual pop-ups and on-screen UI arrows that teach mechanics at the exact moment they become relevant. Fully authored without code changes.",
+        x:-60, y:600,
+      },
+      {
+        id:"scenetrans", tier:3, label:"Scene Transitions", cat:"Core",
+        desc:"Managed scene loading and transition system covering all game state changes: main menu to exploration, exploration to combat, and back. Handles async loading, state preservation, and fade transitions.",
+        x:-200, y:610,
+      },
+      {
+        id:"difficulty", tier:3, label:"Difficulty Integration", cat:"Core",
+        desc:"Difficulty settings that scale across multiple systems: enemy stat multipliers, injury risk, resource scarcity, and encounter frequency. Adjustable per-run to suit different playstyles.",
+        x:-330, y:590,
+      },
+      {
+        id:"saveload", tier:3, label:"Save / Load System", cat:"Core", bold:true,
+        desc:"C# disc-based serialised save/load that captures the full game state: procedural world layout, unit stats, injury states, inventory, and run progress.",
+        x:-450, y:550,
+      },
+      {
+        id:"localise", tier:3, label:"Localisation", cat:"Core",
+        desc:"Full localisation pipeline supporting multiple languages, with a custom Google Sheets sync tool for managing translation workflows across the team.",
+        x:-550, y:490,
+      },
+      {
+        id:"addr", tier:3, label:"Addressables", cat:"Core",
+        desc:"Unity Addressables for async asset loading, memory management, and scalable content delivery, keeping load times low across a large asset library.",
+        x:-610, y:410,
+      },
+
+      // ── TIER 3 — Dev Tools ───────────────────────────────────────────────────
+      {
+        id:"buildpipe", tier:3, label:"Build Pipeline", cat:"Dev Tools", bold:true,
+        desc:"Automated Demo and Production builds with correct naming conventions, git-tag versioning (e.g. 0.9.5), and auto-zipping. One command triggers a full release-ready output.",
+        x:200, y:-270,
+      },
+      {
+        id:"edtools", tier:3, label:"Editor Tools Suite", cat:"Dev Tools",
+        desc:"A large collection: GUID finder, scene switcher, asset selection toolbar, bulk asset editors, Excel→Unity Chinese translation importer, gitignore setup scripts, and many more.",
+        x:300, y:-200,
+      },
+      {
+        id:"mapeditor", tier:3, label:"Map Editor System", cat:"Dev Tools", bold:true,
+        desc:"Designer-friendly combat map creation directly inside the Unity Editor. Non-programmers can build, tile, and populate maps without touching any code.",
+        x:340, y:-130,
+      },
+      {
+        id:"debugmode", tier:3, label:"Debug Mode", cat:"Dev Tools",
+        desc:"Super-fast movement, invincible king, one-click unit kill, and a comprehensive hotkey system with a live on-screen debug hotkey reference UI.",
+        x:300, y:-60,
+      },
+      {
+        id:"scenario", tier:3, label:"Scenario Creator", cat:"Dev Tools", bold:true,
+        desc:"A full authoring environment for the game writer: create new events, branching dialogues, and unit spawns entirely inside Unity with zero programming required.",
+        x:260, y:20,
+      },
+      {
+        id:"locgsync", tier:3, label:"Localisation Sync Tool", cat:"Dev Tools",
+        desc:"Detects changed English localisation keys, marks them Dirty, adds new keys to the Google Sheet, keeping Unity and the translation sheet in sync automatically.",
+        x:200, y:80,
+      },
+    ];
+
+    const EDGES = [
+      ["root","exp"],["root","cbt"],["root","rpg"],["root","audio"],["root","ui"],["root","core"],["root","tools"],
+      ["exp","procgen"],["exp","evtgraph"],["exp","dialogue"],["exp","expui"],["exp","expgrid"],["exp","fortunes"],
+      ["cbt","cbtgrid"],["cbt","turnsys"],["cbt","fow"],["cbt","ability"],["cbt","effect"],
+      ["cbt","rpgsys"],["cbt","enemyai"],["cbt","spine"],["cbt","cbtui"],["cbt","fgfade"],["cbt","injury"],
+      ["rpg","levelup"],["rpg","insights"],["rpg","tactics"],["rpg","equip"],["rpg","trade"],["rpg","injury"],["rpg","items"],
+      ["audio","music"],["audio","wwise"],["audio","cxsound"],
+      ["ui","mainmenu"],["ui","expui"],["ui","cbtui"],["ui","modul"],
+      ["core","evtbus"],["core","pathfinding"],["core","tutorial"],["core","scenetrans"],["core","difficulty"],
+      ["core","saveload"],["core","localise"],["core","addr"],
+      ["tools","buildpipe"],["tools","edtools"],["tools","mapeditor"],["tools","debugmode"],["tools","scenario"],["tools","locgsync"],
+      ["dialogue","expui"],["injury","rpgsys"],["localise","locgsync"],
+    ];
+
+    const NODE_MAP = {};
+    NODES.forEach(n => NODE_MAP[n.id] = n);
+
+    function openArchPanel(nodeId) {
+      const node = NODE_MAP[nodeId];
+      if (!node) return;
+
+      const imgEl = document.getElementById('ap-img');
+      if (node.img) {
+        imgEl.src = node.img;
+        imgEl.style.display = 'block';
+      } else {
+        imgEl.src = '';
+        imgEl.style.display = 'none';
+      }
+
+      document.getElementById('ap-tier').textContent =
+        node.tier === 2 ? 'System Category' : 'Feature';
+      document.getElementById('ap-label').textContent = node.label;
+
+      const catEl = document.getElementById('ap-cat');
+      catEl.textContent = node.cat || '';
+      catEl.style.display = node.cat ? 'inline-block' : 'none';
+
+      document.getElementById('ap-desc').textContent =
+        node.desc || 'Description coming soon.';
+
+      const lwrap = document.getElementById('ap-links-wrap');
+      const lbox  = document.getElementById('ap-links');
+      if (node.links && node.links.length) {
+        lbox.innerHTML = node.links.map(l =>
+          `<a class="ap-link" href="${l.url}" target="_blank">&#8599; ${l.label}</a>`
+        ).join('');
+        lwrap.style.display = 'block';
+      } else { lwrap.style.display = 'none'; }
+
+      const twrap = document.getElementById('ap-tags-wrap');
+      const tbox  = document.getElementById('ap-tags');
+      if (node.tags && node.tags.length) {
+        tbox.innerHTML = node.tags.map(t =>
+          `<span class="ap-tag${node.bold ? ' bold' : ''}">${t}</span>`
+        ).join('');
+        twrap.style.display = 'block';
+      } else { twrap.style.display = 'none'; }
+
+      document.getElementById('arch-panel').classList.add('open');
+      document.getElementById('arch-grid').classList.add('panel-open');
+    }
+
+    function closeArchPanel() {
+      document.getElementById('arch-panel').classList.remove('open');
+      document.getElementById('arch-grid').classList.remove('panel-open');
+    }
+
+    document.addEventListener('click', e => {
+      const panel = document.getElementById('arch-panel');
+      if (panel.classList.contains('open') &&
+          !panel.contains(e.target) &&
+          !e.target.closest('[data-nid]')) {
+        closeArchPanel();
+      }
+    });
+
+    function renderGrid() {
+      const grid = document.getElementById('arch-grid');
+      const cats = NODES.filter(n => n.tier === 2);
+      grid.innerHTML = cats.map(cat => {
+        const color = CAT_COLORS[cat.id] || '#808080';
+        const children = NODES.filter(n =>
+          n.tier === 3 && EDGES.some(e => e[0] === cat.id && e[1] === n.id)
+        ).sort((a, b) => (b.bold ? 1 : 0) - (a.bold ? 1 : 0));
+        const featsHtml = children.map(feat =>
+          `<li class="arch-feat${feat.bold ? ' notable' : ''}" data-nid="${feat.id}"><span class="arch-feat-dot">${feat.bold ? '&#9733;' : '&middot;'}</span>${feat.label}</li>`
+        ).join('');
+        return `<div class="arch-card" style="--accent:${color}"><div class="arch-card-hdr" data-nid="${cat.id}"><span class="arch-card-name">${cat.label}</span><span class="arch-card-ct">${children.length}</span></div><ul class="arch-feats">${featsHtml}</ul></div>`;
+      }).join('');
+
+      grid.querySelectorAll('[data-nid]').forEach(el => {
+        el.addEventListener('click', e => {
+          e.stopPropagation();
+          openArchPanel(el.dataset.nid);
+        });
+      });
+    }
+
+    renderGrid();
+    </script>
+  </section>
+
   <section class="section" id="masters-thesis">
+    <style>
+      .thesis-showcase {
+        display: flex;
+        align-items: stretch;
+        background: #0f0f17;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .thesis-text {
+        flex: 1;
+        padding: 40px 44px;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .thesis-eyebrow {
+        font-family: 'Space Mono', monospace;
+        font-size: 9px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: #f0b860;
+        opacity: 0.75;
+        margin-bottom: 16px;
+      }
+      .thesis-title {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(22px, 2.4vw, 34px);
+        font-weight: 700;
+        color: #e0d5c5;
+        line-height: 1.1;
+        margin-bottom: 18px;
+      }
+      .thesis-abstract {
+        font-size: 13px;
+        line-height: 1.85;
+        color: #a8a4a0;
+        margin-bottom: 24px;
+        max-width: 520px;
+      }
+      .thesis-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .thesis-badge {
+        font-family: 'Space Mono', monospace;
+        font-size: 8.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 2px;
+        background: rgba(224,170,120,0.08);
+        border: 1px solid rgba(224,170,120,0.28);
+        color: #e0aa78;
+      }
+      .thesis-tags-line {
+        font-family: 'Space Mono', monospace;
+        font-size: 9px;
+        color: #6a6460;
+        letter-spacing: 0.06em;
+        margin-bottom: 28px;
+      }
+      .thesis-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .thesis-btn {
+        font-family: 'Space Mono', monospace;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 10px 18px;
+        border-radius: 2px;
+        text-decoration: none;
+        transition: background 0.15s;
+        cursor: pointer;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .thesis-btn-primary {
+        background: rgba(224,170,120,0.12);
+        border: 1px solid rgba(224,170,120,0.35);
+        color: #e0aa78;
+      }
+      .thesis-btn-primary:hover { background: rgba(224,170,120,0.22); color: #e0aa78; }
+      .thesis-btn-ghost {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.2);
+        color: #a0a09a;
+      }
+      .thesis-btn-ghost:hover { background: rgba(255,255,255,0.07); color: #c0b8ac; }
+      .thesis-img-col {
+        width: 40%;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        background: #07070d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255,255,255,0.08);
+        padding: 18px;
+        box-sizing: border-box;
+      }
+      .thesis-img-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        transition: transform 0.4s ease;
+        border-radius: 2px;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      }
+      .thesis-img-col:hover img { transform: scale(1.03); }
+      .thesis-img-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(5,5,12,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .thesis-img-col:hover .thesis-img-overlay { opacity: 1; }
+      .thesis-img-overlay span {
+        font-family: 'Space Mono', monospace;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #e0d5c5;
+        background: rgba(10,10,20,0.7);
+        padding: 6px 14px;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.15);
+      }
+      @media (max-width: 900px) {
+        .thesis-showcase { flex-direction: column-reverse; }
+        .thesis-img-col { width: 100%; height: 220px; }
+      }
+    </style>
     <div class="container">
-      <h1 class="title">Master's Thesis</h1>
-      <hr />
-      <div class="tile is-ancestor">
-        <div class="tile is-vertical is-12">
-          <div class="tile">
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Mixed-Initiative Tile-Based Designer</p>
-                <figure class="image is-16by9">
-                  <img class="modal-trigger" data-target="project-thesis-1-modal"
-                    src="img/masters-thesis/mtd-thumbnail.png" />
-                </figure>
-              </article>
-            </div>
+      <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#f0b860;opacity:0.6;margin-bottom:18px;">Research</p>
+      <div class="thesis-showcase">
+        <div class="thesis-text">
+          <p class="thesis-eyebrow">Master's Thesis &middot; KTH Royal Institute of Technology &middot; 2021</p>
+          <h2 class="thesis-title">Mixed-Initiative<br>Tile-Based Designer</h2>
+          <p class="thesis-abstract">A multi-layer procedural generation framework for 2D level design in Unity, built for human-AI collaborative authoring. Designers define structure through mission and shape grammar rules; the system assembles full playable maps from macro and micro templates. No programming required for content creation.</p>
+          <div class="thesis-badges">
+            <span class="thesis-badge">&#9733; Cited in IEEE research (2025)</span>
+            <span class="thesis-badge">Open Source</span>
           </div>
+          <p class="thesis-tags-line">Unity &middot; C# &middot; Procedural Generation &middot; Framework Design &middot; Mixed-Initiative Systems</p>
+          <div class="thesis-actions">
+            <a class="thesis-btn thesis-btn-primary modal-trigger" data-target="project-thesis-1-modal">View Details &#8599;</a>
+            <a class="thesis-btn thesis-btn-ghost" href="https://www.youtube.com/watch?v=EuGOtGQj0i0" target="_blank">Watch Demo &#8599;</a>
+          </div>
+        </div>
+        <div class="thesis-img-col modal-trigger" data-target="project-thesis-1-modal">
+          <img src="img/masters-thesis/mtd-thumbnail.png" alt="Mixed-Initiative Tile-Based Designer" />
+          <div class="thesis-img-overlay"><span>View Gallery</span></div>
         </div>
       </div>
     </div>
@@ -380,274 +1301,267 @@
     </div>
   </section>
   <section class="section" id="major-projects">
-    <!--<div class="container">
-      <h1 class="title">Major Projects</h1>
+    <style>
+      .proj-section-label { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:#e0aa78; opacity:0.7; margin-bottom:8px; }
+      .proj-featured-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:28px; }
+      .proj-card { background:#0f0f17; border:1px solid rgba(255,255,255,0.07); border-radius:3px; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; transition:border-color 0.2s, box-shadow 0.2s; }
+      .proj-card:hover { border-color:rgba(255,255,255,0.16); box-shadow:0 4px 24px rgba(0,0,0,0.5); }
+      .proj-img-wrap { position:relative; overflow:hidden; }
+      .proj-img-wrap img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; transition:transform 0.4s ease; }
+      .proj-card:hover .proj-img-wrap img { transform:scale(1.04); }
+      .proj-img-overlay { position:absolute; inset:0; background:rgba(5,5,12,0.5); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.2s; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:#e0d5c5; }
+      .proj-card:hover .proj-img-overlay { opacity:1; }
+      .proj-body { padding:20px 22px 22px; flex:1; display:flex; flex-direction:column; }
+      .proj-eyebrow { font-family:'Space Mono',monospace; font-size:8px; letter-spacing:0.18em; text-transform:uppercase; color:#6a6460; margin-bottom:8px; }
+      .proj-title { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; color:#e0d5c5; line-height:1.2; margin-bottom:10px; }
+      .proj-desc { font-size:12.5px; line-height:1.75; color:#a0a09a; margin-bottom:14px; flex:1; }
+      .proj-tags { display:flex; flex-wrap:wrap; gap:5px; }
+      .proj-tag { font-family:'Space Mono',monospace; font-size:7.5px; letter-spacing:0.08em; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#6a6460; }
+      .jam-toggle-btn { display:flex; align-items:center; gap:10px; background:transparent; border:1px solid rgba(255,255,255,0.1); border-radius:3px; padding:11px 18px; cursor:pointer; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#6a6460; transition:border-color 0.2s, color 0.2s; margin-top:36px; width:100%; text-align:left; }
+      .jam-toggle-btn:hover { border-color:rgba(255,255,255,0.2); color:#a0a09a; }
+      .jam-icon { margin-left:auto; font-size:13px; transition:transform 0.25s; display:inline-block; }
+      .jam-toggle-btn.open .jam-icon { transform:rotate(180deg); }
+      .jam-grid { display:none; margin-top:16px; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px; }
+      .jam-grid.visible { display:grid; }
+      .jam-card { background:#0a0a12; border:1px solid rgba(255,255,255,0.06); border-radius:2px; overflow:hidden; cursor:pointer; transition:border-color 0.15s; }
+      .jam-card:hover { border-color:rgba(255,255,255,0.13); }
+      .jam-card img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; transition:transform 0.3s; }
+      .jam-card:hover img { transform:scale(1.04); }
+      .jam-card-body { padding:10px 12px 12px; }
+      .jam-card-title { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:#b8b0a8; margin-bottom:6px; line-height:1.2; }
+      .jam-tags { display:flex; flex-wrap:wrap; gap:4px; }
+      .jam-tag { font-family:'Space Mono',monospace; font-size:7px; letter-spacing:0.07em; text-transform:uppercase; padding:2px 6px; border-radius:2px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); color:#5a5450; }
+      @media (max-width:960px) { .proj-featured-grid { grid-template-columns:repeat(2,1fr); } }
+      @media (max-width:600px) { .proj-featured-grid { grid-template-columns:1fr; } }
+    </style>
+    <div class="container">
+      <p class="proj-section-label">Personal &amp; Creative</p>
+      <h1 class="title">Creative Projects</h1>
       <hr />
-      <div class="tile is-ancestor">
-        <div class="tile is-vertical is-12">
-          <div class="tile">
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Confusion - An Amnesia Mod</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-major-2-modal" src="img/amnesia/the-machinery.png" />
-                </figure>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Clicker - A React Native App</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-major-3-modal" src="img/clicker/clicker-logo.png" />
-                </figure>
-              </article>
+
+      <div class="proj-featured-grid">
+
+        <!-- Confusion -->
+        <div class="proj-card modal-trigger" data-target="project-major-2-modal">
+          <div class="proj-img-wrap">
+            <img src="img/amnesia/the-machinery.png" alt="Confusion - An Amnesia Mod" />
+            <div class="proj-img-overlay">View Details &#8599;</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-eyebrow">2012 &ndash; 2014 &middot; Horror Mod</p>
+            <p class="proj-title">Confusion: An Amnesia Mod</p>
+            <p class="proj-desc">A full-length custom story for Amnesia: The Dark Descent. Multi-level atmospheric horror with original ambient audio, voice acting, custom 3D assets, and thousands of lines of scripted events.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">C++</span>
+              <span class="proj-tag">Game Design</span>
+              <span class="proj-tag">Level Design</span>
+              <span class="proj-tag">Maya</span>
+              <span class="proj-tag">Audacity</span>
             </div>
           </div>
         </div>
+
+        <!-- Diamond in the Rough -->
+        <div class="proj-card modal-trigger" data-target="project-fun-1-modal">
+          <div class="proj-img-wrap">
+            <img src="img/others/diamond_rough.png" alt="Diamond in the Rough" />
+            <div class="proj-img-overlay">View Details &#8599;</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-eyebrow">2017 &ndash; 2018 &middot; Novel &middot; 68,000 words</p>
+            <p class="proj-title">Diamond in the Rough</p>
+            <p class="proj-desc">A near-complete work of fiction. A sudden near-death experience consumes Mina Hratien and spits out a version that will either be the world's demise or its savior.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Creative Writing</span>
+              <span class="proj-tag">Fiction</span>
+              <span class="proj-tag">World-Building</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Knell of Godhrkar -->
+        <div class="proj-card modal-trigger" data-target="project-fun-3-modal">
+          <div class="proj-img-wrap">
+            <img src="img/others/aeriff-scene01.png" alt="Knell of Godhrkar" />
+            <div class="proj-img-overlay">View Details &#8599;</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-eyebrow">2018 &middot; Game &middot; Lead Writer</p>
+            <p class="proj-title">Knell of Godhrkar</p>
+            <p class="proj-desc">Lead writer for a collaborative fantasy game demo. Wrote three central characters across dozens of scenes, developing their arcs from outline to final dialogue.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Creative Writing</span>
+              <span class="proj-tag">Narrative Design</span>
+              <span class="proj-tag">Collaboration</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="jam-toggle-btn" id="jam-toggle-btn">
+        <span>Game Jam &amp; Academic Projects</span>
+        <span style="color:#4a4440; margin-left:6px;">(10)</span>
+        <span class="jam-icon">&#8595;</span>
+      </button>
+
+      <div class="jam-grid" id="jam-grid">
+
+        <div class="jam-card modal-trigger" data-target="project-regular-3-modal">
+          <img src="img/procedural-grass/grass1.png" alt="Procedural Generation of Grass" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Procedural Grass</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">Shaders</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-major-3-modal">
+          <img src="img/clicker/clicker-logo.png" alt="Clicker" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Clicker</p>
+            <div class="jam-tags">
+              <span class="jam-tag">React Native</span>
+              <span class="jam-tag">Mobile</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-minor-1-modal">
+          <img src="img/3D-platformer/start.png" alt="3D Platformer" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">3D Platformer</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">Academic</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-minor-3-modal">
+          <img src="img/zombtron/medium-encounter2.png" alt="Zombtron" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Zombtron</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">Academic</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-minor-2-modal">
+          <img src="img/rabbit-game/rabbit-start.png" alt="Rabbit Simulation" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Rabbit Simulation</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">Simulation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-regular-1-modal">
+          <img src="img/astaroths-uprising/astaroth-front-page.png" alt="Astaroth's Uprising" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Astaroth's Uprising</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">RPG</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-regular-4-modal">
+          <img src="img/heist-to-die-for/ingame-footage.png" alt="A Heist To Die For" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">A Heist To Die For</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">Game Jam</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-regular-2-modal">
+          <img src="img/mrchchaplin/chaplin4.png" alt="Mr. ChChaplin's Factory" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Mr. ChChaplin's Factory</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">Game Jam</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-regular-5-modal">
+          <img src="img/Featherfall/featherfall.png" alt="Featherfall" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Featherfall</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">Game Jam</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card modal-trigger" data-target="project-minor-4-modal">
+          <img src="img/run-little-humans/military.png" alt="Run Little Humans" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Run Little Humans</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Unity</span>
+              <span class="jam-tag">Game Jam</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nostalgia separator -->
+        <div style="grid-column:1/-1; display:flex; align-items:center; gap:14px; margin:6px 0 2px;">
+          <span style="font-family:'Space Mono',monospace; font-size:7px; letter-spacing:0.16em; text-transform:uppercase; color:#3a3430; white-space:nowrap;">just for fun</span>
+          <span style="flex:1; height:1px; background:rgba(255,255,255,0.05);"></span>
+        </div>
+
+        <div class="jam-card jam-card-fun modal-trigger" data-target="project-fun-2-modal">
+          <img src="img/others/stick_flash.png" alt="Stickman Animations" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">Stickman Animations</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Flash</span>
+              <span class="jam-tag">YouTube</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="jam-card jam-card-fun modal-trigger" data-target="project-fun-4-modal">
+          <img src="img/others/wow_screenshot.png" alt="The Last Heroes" />
+          <div class="jam-card-body">
+            <p class="jam-card-title">The Last Heroes</p>
+            <div class="jam-tags">
+              <span class="jam-tag">Warcraft III</span>
+              <span class="jam-tag">Custom Map</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </section>-->
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Projects</h1>
-        <hr />
-        <div class="tile is-ancestor">
-          <div class="tile is-vertical is-12">
-            <div class="tile">
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Confusion - An Amnesia Mod</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-major-2-modal"
-                      src="img/amnesia/the-machinery.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Procedural Generation of Grass</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-regular-3-modal"
-                      src="img/procedural-grass/grass1.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Clicker - A React Native App</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-major-3-modal" src="img/clicker/clicker-logo.png" />
-                  </figure>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tile is-ancestor">
-          <div class="tile is-vertical is-12">
-            <div class="tile">
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">A Heist To Die For</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-regular-4-modal"
-                      src="img/heist-to-die-for/ingame-footage.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Featherfall</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-regular-5-modal"
-                      src="img/Featherfall/featherfall.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Astaroth's Uprising</p>
-                  <figure class="image is-16by9">
-                    <img class="modal-trigger" data-target="project-regular-1-modal"
-                      src="img/astaroths-uprising/astaroth-front-page.png" />
-                  </figure>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tile is-ancestor">
-          <div class="tile is-vertical is-12">
-            <div class="tile">
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Mr. ChChaplin's Factory</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-regular-2-modal"
-                      src="img/mrchchaplin/chaplin4.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <!-- <article class="tile is-child notification">
-                <p class="title">Featherfall</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-regular-5-modal" src="img/Featherfall/featherfall.png">
-                </figure>
-              </article> -->
-              </div>
-              <div class="tile is-parent">
-                <!-- <article class="tile is-child notification">
-                <p class="title">Featherfall</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-regular-5-modal" src="img/Featherfall/featherfall.png">
-                </figure>
-              </article> -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Minor Projects</h1>
-        <hr />
-        <div class="tile is-ancestor">
-          <div class="tile is-vertical is-12">
-            <div class="tile">
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">3D Platformer</p>
-                  <figure class="image is-16by9">
-                    <img class="modal-trigger" data-target="project-minor-1-modal" src="img/3D-platformer/start.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Rabbit Simulation</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-minor-2-modal"
-                      src="img/rabbit-game/rabbit-start.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Zombtron</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-minor-3-modal"
-                      src="img/zombtron/medium-encounter2.png" />
-                  </figure>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tile is-ancestor">
-          <div class="tile is-vertical is-12">
-            <div class="tile">
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Run Little Humans</p>
-                  <figure class="image is-16by9">
-                    <img class="modal-trigger" data-target="project-minor-4-modal"
-                      src="img/run-little-humans/military.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <!-- <article class="tile is-child notification">
-                <p class="title">Run Little Humans</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-minor-4-modal" src="img/run-little-humans/military.png">
-                </figure>
-              </article> -->
-              </div>
-              <div class="tile is-parent">
-                <!-- <article class="tile is-child notification">
-                <p class="title">Run Little Humans</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-minor-4-modal" src="img/run-little-humans/military.png">
-                </figure>
-              </article> -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Other fun projects
-          <a class="card-toggle">
-            <i class="fa fa-angle-down" id="collapsible-button"></i>
-          </a>
-        </h1>
-        <hr />
-        <div class="tile is-ancestor is-hidden collapsible">
-          <div class="tile is-vertical is-12">
-            <div class="tile">
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Diamond in the Rough</p>
-                  <figure class="image is-16by9">
-                    <img class="modal-trigger" data-target="project-fun-1-modal" src="img/others/diamond_rough.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Stickman Animations</p>
-                  <figure class="image is-4by3">
-                    <img class="modal-trigger" data-target="project-fun-2-modal" src="img/others/stick_flash.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">Knell of Godhrkar</p>
-                  <figure class="image is-16by9">
-                    <img class="modal-trigger" data-target="project-fun-3-modal" src="img/others/aeriff-scene01.png" />
-                  </figure>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tile is-ancestor is-hidden collapsible">
-          <div class="tile is-vertical is-12">
-            <div class="tile">
-              <div class="tile is-parent">
-                <article class="tile is-child notification">
-                  <p class="title">The Last Heroes - Warcraft III</p>
-                  <figure class="image is-16by9">
-                    <img class="modal-trigger" data-target="project-fun-4-modal" src="img/others/wow_screenshot.png" />
-                  </figure>
-                </article>
-              </div>
-              <div class="tile is-parent">
-                <!-- <article class="tile is-child notification">
-                <p class="title">The Last Heroes - Warcraft III</p>
-                <figure class="image is-16by9">
-                  <img class="modal-trigger" data-target="project-fun-4-modal" src="img/others/wow_screenshot.png">
-                </figure>
-              </article> -->
-              </div>
-              <div class="tile is-parent">
-                <!-- <article class="tile is-child notification">
-                <p class="title">The Last Heroes - Warcraft III</p>
-                <figure class="image is-16by9">
-                  <img class="modal-trigger" data-target="project-fun-4-modal" src="img/others/wow_screenshot.png">
-                </figure>
-              </article> -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <script>
+      (function() {
+        var btn = document.getElementById('jam-toggle-btn');
+        var grid = document.getElementById('jam-grid');
+        if (btn && grid) {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var open = grid.classList.toggle('visible');
+            btn.classList.toggle('open', open);
+            btn.querySelector('.jam-icon').innerHTML = open ? '&#8593;' : '&#8595;';
+          });
+        }
+      })();
+    </script>
+  </section>
     <section class="section" id="social-icons">
       <div class="container">
         <h1 class="title">Contact</h1>
@@ -688,79 +1602,85 @@
           <button aria-label="close" class="delete"></button>
         </header>
         <section class="modal-card-body">
-          <div class="carousel" id="project-thesis-1-modal-carousel">
-            <figure class="image is-4by3 carousel-cell">
-              <img src="img/masters-thesis/mission-into-shape.png" />
-            </figure>
-            <figure class="image is-4by3 carousel-cell">
-              <img src="img/masters-thesis/shape-into-level.png" />
-            </figure>
-            <figure class="image is-4by3 carousel-cell">
-              <img src="img/masters-thesis/level-consists-of-macro-templates.png" />
-            </figure>
-            <figure class="image is-4by3 carousel-cell">
-              <img src="img/masters-thesis/macro-template-into-micro.png" />
-            </figure>
-            <figure class="image is-4by3 carousel-cell">
-              <img src="img/masters-thesis/micro-template-consists-of-probability-tiles.png" />
-            </figure>
-          </div>
-          <div class="content">
-            <p><b>Mixed-Initiative Tile-Based Designer</b>
-              is a highly customizable framework for producing procedurally generated 2D maps. It does not require
-              programming
-              knowledge to produce levels with, although building a game on top of the framework does.
-              <br />
-              <br />
-              The framework uses a multi-layered approach to procedural content generation. First it produces a mission
-              layout.
-              This mission layout is an abstract representation of the tasks that the player may encounter throughout
-              the level. On top of that is the space layer. This is yet another abstract layer. The purpose of this
-              layer
-              is to translate
-              the mission layout into a 2D tile-based overview of the final map. Finally, the overview in the space
-              layer
-              is
-              transformed into the final level. The final level is built out of macro-templates which may in turn be
-              built
-              out of micro-templates.
-              After the final level has been constructed out of the macro-templates, the level is finished.
+          <div class="tm-layout">
 
-              <br />
-              <br />
-              Every layer is customizable. The user designs:
-            <ul>
-              <li>Mission grammar rules from which the mission structure is derived</li>
-              <li>Shape grammar rules from which the space structure is derived</li>
-              <li>Macro-templates from which the level is derived</li>
-              <li>Micro-templates from which macro-templates may be partially derived</li>
-              <li>Probabilistic tiles which may randomize into any other tiles</li>
-            </ul>
-            <a href="https://www.youtube.com/watch?v=EuGOtGQj0i0" target="_blank">This video</a> gives a brief overview
-            of
-            this generation process.
-            <br />
-            <br />
-            Please note that while the procedural generation process uses randomization, it can be partially or
-            completely
-            deterministic
-            if the user wishes to design it that way.
-
-            <br />
-            <br />
-            Originally developed as part of Rafael Dolfe’s research at KTH,
-            the Mixed-Initiative Tile-Based Designer has since been adopted in academic work and cited in IEEE research
-            (2025).
-            <br />
-            <br />
-            </p>
-            <div class="tags">
-              <span class="tag">unity3d</span>
-              <span class="tag">c#</span>
-              <span class="tag">procedural-generation</span>
-              <span class="tag">tools-programming</span>
-              <span class="tag">framework</span>
+            <!-- LEFT: text content + meta -->
+            <div class="tm-left">
+              <div class="content tm-content">
+                <p class="tm-section-hdr">About</p>
+                <p>A highly customizable framework for producing procedurally generated 2D maps. Requires no
+                  programming knowledge to design levels, though building a game on top of the framework does.</p>
+                <p class="tm-section-hdr">How it works</p>
+                <p>Uses a multi-layered pipeline: first a <strong>mission layout</strong> (abstract task structure),
+                  then a <strong>space layer</strong> (2D tile-based map overview), then the final level assembled
+                  from <strong>macro-templates</strong> and <strong>micro-templates</strong> composed of probabilistic
+                  tiles. Every layer is independently customizable and can be made fully deterministic if desired.</p>
+                <p class="tm-section-hdr">What you design</p>
+                <ul>
+                  <li>Mission grammar rules</li>
+                  <li>Shape grammar rules</li>
+                  <li>Macro-templates</li>
+                  <li>Micro-templates</li>
+                  <li>Probabilistic tiles</li>
+                </ul>
+                <p style="margin-top:16px; font-size:12px; color:#a8a4a0;">
+                  Originally developed at KTH, the framework has since been adopted in academic work.
+                  <a href="https://www.youtube.com/watch?v=EuGOtGQj0i0" target="_blank">A video overview</a>
+                  walks through the full generation pipeline.
+                </p>
+                <div class="tags" style="margin-top:16px;">
+                  <span class="tag">Unity3D</span>
+                  <span class="tag">C#</span>
+                  <span class="tag">Procedural Generation</span>
+                  <span class="tag">Tools Programming</span>
+                  <span class="tag">Framework Design</span>
+                </div>
+              </div>
+              <div class="tm-meta">
+                <div class="tm-meta-item">
+                  <span class="tm-meta-lbl">Institution</span>
+                  <span class="tm-meta-val">KTH Royal Institute of Technology</span>
+                </div>
+                <div class="tm-meta-item">
+                  <span class="tm-meta-lbl">Year</span>
+                  <span class="tm-meta-val">2021</span>
+                </div>
+                <div class="tm-meta-item">
+                  <span class="tm-meta-lbl">Recognition</span>
+                  <span class="tm-meta-val tm-cited">&#9733; Cited in IEEE research (2025)</span>
+                </div>
+              </div>
             </div>
+
+            <!-- RIGHT: gallery (no scroll) -->
+            <div class="tm-right">
+              <img class="tm-main" id="thesis-main-img"
+                src="img/masters-thesis/mission-into-shape.png"
+                alt="Mixed-Initiative Tile-Based Designer" />
+              <div class="tm-nav-row">
+                <button class="tm-nav-btn" onclick="tmNav(-1)">&#8592;</button>
+                <span id="tm-nav-count" class="tm-nav-count">1 / 5</span>
+                <button class="tm-nav-btn" onclick="tmNav(1)">&#8594;</button>
+              </div>
+              <div class="tm-thumbs">
+                <img class="tm-thumb tm-active"
+                  src="img/masters-thesis/mission-into-shape.png"
+                  onclick="tmSetImg(this)" alt="Mission layout" />
+                <img class="tm-thumb"
+                  src="img/masters-thesis/shape-into-level.png"
+                  onclick="tmSetImg(this)" alt="Shape layer" />
+                <img class="tm-thumb"
+                  src="img/masters-thesis/level-consists-of-macro-templates.png"
+                  onclick="tmSetImg(this)" alt="Macro templates" />
+                <img class="tm-thumb"
+                  src="img/masters-thesis/macro-template-into-micro.png"
+                  onclick="tmSetImg(this)" alt="Micro-templates" />
+                <img class="tm-thumb"
+                  src="img/masters-thesis/micro-template-consists-of-probability-tiles.png"
+                  onclick="tmSetImg(this)" alt="Probabilistic tiles" />
+              </div>
+            </div>
+
           </div>
         </section>
         <footer class="modal-card-foot">
@@ -1628,18 +2548,49 @@
         </footer>
       </div>
     </div>
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong style="font-size: small;">Many thanks to Mark for the amazing portfolio template</strong>
-        </p>
-        <p>
-          <a class="icon has-text-primary" href="https://github.com/mmacneil/devfolio" target="_blank">
-            <i class="fab fa-github"></i> <strong>devfolio</strong></a>
-        </p>
-      </div>
-    </footer>
     <script src="js/bundle.js"></script>
+    <script>
+      // Move mindmap to right after the hero for the "hero → deep-dive" flow
+      (function () {
+        var hero = document.getElementById('lito-hero');
+        var mindmap = document.getElementById('mindmap-section');
+        if (hero && mindmap) {
+          hero.after(mindmap);
+        }
+      })();
+    </script>
+
+  <script>
+    /* Click outside modal to close */
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.modal-background').forEach(function (bg) {
+        bg.addEventListener('click', function () {
+          var modal = bg.closest('.modal');
+          if (modal) {
+            modal.classList.remove('is-active');
+            document.documentElement.classList.remove('is-clipped');
+          }
+        });
+      });
+    });
+    /* Thesis gallery nav */
+    var _tmIdx = 0;
+    function tmSetImg(el) {
+      var thumbs = Array.from(document.querySelectorAll('.tm-thumb'));
+      _tmIdx = thumbs.indexOf(el);
+      document.getElementById('thesis-main-img').src = el.src;
+      thumbs.forEach(function(t){ t.classList.remove('tm-active'); });
+      el.classList.add('tm-active');
+      var counter = document.getElementById('tm-nav-count');
+      if (counter) counter.textContent = (_tmIdx + 1) + ' / ' + thumbs.length;
+    }
+    function tmNav(dir) {
+      var thumbs = Array.from(document.querySelectorAll('.tm-thumb'));
+      if (!thumbs.length) return;
+      _tmIdx = (_tmIdx + dir + thumbs.length) % thumbs.length;
+      tmSetImg(thumbs[_tmIdx]);
+    }
+  </script>
 </body>
 
 </html>
