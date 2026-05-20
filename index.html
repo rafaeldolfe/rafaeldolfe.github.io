@@ -551,7 +551,8 @@
       .arch-ttl { font-family:'Syne',sans-serif; font-size:42px; font-weight:700; color:#e0d5c5; margin-bottom:8px; line-height:1; }
       .arch-sub { font-size:10px; color:#828880; letter-spacing:0.06em; }
 
-      #arch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); max-width:1400px; margin:0 auto; width:100%; box-sizing:border-box; }
+      #arch-grid { display:grid; grid-template-columns:repeat(6,1fr); max-width:1400px; margin:0 auto; width:100%; box-sizing:border-box; }
+      @media (max-width:1000px) { #arch-grid { grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); } }
       .arch-card { border-right:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); transition:background 0.15s; }
       .arch-card:hover { background:rgba(255,255,255,0.018); }
       .arch-card-hdr { padding:14px 20px 12px; border-left:3px solid var(--accent); border-bottom:1px solid rgba(255,255,255,0.04); display:flex; align-items:baseline; gap:8px; cursor:pointer; user-select:none; }
