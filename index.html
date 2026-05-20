@@ -590,7 +590,7 @@
     <div id="arch-hdr">
       <p class="arch-lbl">Lost In The Open</p>
       <h2 class="arch-ttl">System Map</h2>
-      <p class="arch-sub">6 systems &middot; 43 documented features &middot; built over 6 years &middot; click any feature to read more</p>
+      <p class="arch-sub">6 systems &middot; 43 documented features &middot; &#9733; = key feature &middot; click any to read more</p>
     </div>
 
     <div id="arch-grid"></div>
@@ -743,7 +743,7 @@
       },
       {
         id:"ability", tier:3, label:"Ability System", cat:"Combat", bold:true,
-        desc:"Each unit can carry up to five active abilities, excluding movement and basic attack.<br><br>&bull; Each ability is heavily upgradeable through the level system<br>&bull; Upgrades have a major impact on a unit's combat role and power ceiling<br>&bull; Rich synergy space across different units' ability sets rewards thoughtful party composition",
+        desc:"Each unit can carry up to four active abilities, excluding movement and basic attack.<br><br>&bull; Each ability is heavily upgradeable through the level system<br>&bull; Upgrades have a major impact on a unit's combat role and power ceiling<br>&bull; Rich synergy space across different units' ability sets rewards thoughtful party composition",
         x:-480, y:600,
       },
       {
@@ -1308,7 +1308,7 @@
           <div class="proj-body">
             <p class="proj-eyebrow">2012 &ndash; 2014 &middot; Horror Mod</p>
             <p class="proj-title">Confusion: An Amnesia Mod</p>
-            <p class="proj-desc">A full-length custom story for Amnesia: The Dark Descent. Multi-level atmospheric horror with original ambient audio, voice acting, custom 3D assets, and thousands of lines of scripted events.</p>
+            <p class="proj-desc">A custom story for Amnesia: The Dark Descent. Multi-level atmospheric horror with original ambient audio, voice acting, custom 3D assets, and thousands of lines of scripted events.</p>
             <div class="proj-tags">
               <span class="proj-tag">C++</span>
               <span class="proj-tag">Game Design</span>
@@ -1328,7 +1328,7 @@
           <div class="proj-body">
             <p class="proj-eyebrow">2017 &ndash; 2018 &middot; Novel &middot; 68,000 words</p>
             <p class="proj-title">Diamond in the Rough</p>
-            <p class="proj-desc">A near-complete work of fiction. A sudden near-death experience consumes Mina Hratien and spits out a version that will either be the world's demise or its savior.</p>
+            <p class="proj-desc">A near-complete work of fiction. A sudden near-death experience consumes Mina Hratien and spits out a version that will dictate the trajectory of the region for decades.</p>
             <div class="proj-tags">
               <span class="proj-tag">Creative Writing</span>
               <span class="proj-tag">Fiction</span>
@@ -1346,7 +1346,7 @@
           <div class="proj-body">
             <p class="proj-eyebrow">2018 &middot; Game &middot; Lead Writer</p>
             <p class="proj-title">Knell of Godhrkar</p>
-            <p class="proj-desc">Lead writer for a collaborative fantasy game demo. Wrote three central characters across dozens of scenes, developing their arcs from outline to final dialogue.</p>
+            <p class="proj-desc">Lead writer for an early collaborative fantasy game demo. Wrote three central characters across many scenes, developing them from outline to final dialogue.</p>
             <div class="proj-tags">
               <span class="proj-tag">Creative Writing</span>
               <span class="proj-tag">Narrative Design</span>
@@ -1564,30 +1564,7 @@
 
             <!-- LEFT: text content + meta -->
             <div class="tm-left">
-              <div class="content tm-content">
-                <p>A highly customizable framework for producing procedurally generated 2D maps. Requires no
-                  programming knowledge to design levels, though building a game on top of the framework does.</p>
-                <p class="tm-section-hdr">How it works</p>
-                <p>Uses a multi-layered pipeline: first a <strong>mission layout</strong> (abstract task structure),
-                  then a <strong>space layer</strong> (2D tile-based map overview), then the final level assembled
-                  from <strong>macro-templates</strong> and <strong>micro-templates</strong> composed of probabilistic
-                  tiles. Every layer is independently customizable and can be made fully deterministic if desired.</p>
-                <p class="tm-section-hdr">What you design</p>
-                <ul>
-                  <li>Mission grammar rules</li>
-                  <li>Shape grammar rules</li>
-                  <li>Macro-templates</li>
-                  <li>Micro-templates</li>
-                  <li>Probabilistic tiles</li>
-                </ul>
-                <p style="margin-top:16px; font-size:12px; color:#a8a4a0;">
-                  Originally developed at KTH, the framework has since been adopted in academic work.
-                  <a href="https://www.youtube.com/watch?v=EuGOtGQj0i0" target="_blank">A video overview</a>
-                  walks through the full generation pipeline.
-                </p>
-
-              </div>
-              <div class="tm-meta">
+              <div class="tm-meta" style="border-top:none; border-bottom:1px solid rgba(255,255,255,0.06);">
                 <div class="tm-meta-item">
                   <span class="tm-meta-lbl">Institution</span>
                   <span class="tm-meta-val">KTH Royal Institute of Technology</span>
@@ -1600,6 +1577,22 @@
                   <span class="tm-meta-lbl">Recognition</span>
                   <span class="tm-meta-val tm-cited">&#9733; Cited in IEEE research (2025)</span>
                 </div>
+              </div>
+              <div class="content tm-content">
+                <p>A highly customizable framework for producing procedurally generated 2D maps. Requires no
+                  programming knowledge to design levels, though building a game on top of the framework does.</p>
+                <p>Uses a multi-layered pipeline: first a <strong>mission layout</strong> (abstract task structure),
+                  then a <strong>space layer</strong> (2D tile-based map overview), then the final level assembled
+                  from <strong>macro-templates</strong> and <strong>micro-templates</strong> composed of probabilistic
+                  tiles. Every layer is independently customizable and can be made fully deterministic if desired.</p>
+                <p>What you design:</p>
+                <ul>
+                  <li>Mission grammar rules</li>
+                  <li>Shape grammar rules</li>
+                  <li>Macro-templates</li>
+                  <li>Micro-templates</li>
+                  <li>Probabilistic tiles</li>
+                </ul>
               </div>
             </div>
 
